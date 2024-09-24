@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Skola_App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Skola_App.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <ShellContent
+        Title="Zaměstnanci"
+         ContentTemplate="{DataTemplate views:Zamestnanci}"
+       
+         />
+
+        <ShellContent
+        Title="Učitelé"
+        ContentTemplate="{DataTemplate views:Ucitele}"
+         />
+
+        <ShellContent
+         Title="Údržbáři"
+          ContentTemplate="{DataTemplate views:Udrzba}"
+
+          />
+
+            <ShellContent
+         Title="Podpora"
+         ContentTemplate="{DataTemplate views:Podpora}"
+          />    
+    </TabBar>
+</Shell>
