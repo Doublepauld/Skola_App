@@ -27,6 +27,11 @@
             <ShellContent
          Title="Podpora"
          ContentTemplate="{DataTemplate views:Podpora}"
-          />    
+          />
+
+        <ShellContent
+          Title="Studenti"
+          ContentTemplate="{DataTemplate views:Student}"
+           />   
     </TabBar>
 </Shell>

@@ -3,7 +3,7 @@ namespace Skola_App;
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 public partial class Modal_udrzbar : ContentPage
 {
-    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "notes.txt");
+    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "udrzba.txt");
 
     public string ItemId
     {
@@ -17,7 +17,7 @@ public partial class Modal_udrzbar : ContentPage
 
 
         string appDataPath = FileSystem.AppDataDirectory;
-        string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
+        string randomFileName = $"{Path.GetRandomFileName()}.udrzba.txt";
 
         LoadNote(Path.Combine(appDataPath, randomFileName));
 
@@ -26,7 +26,7 @@ public partial class Modal_udrzbar : ContentPage
 
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
-        string text = TextEditor1.Text + TextEditor2.Text;
+        string text = $"{TextEditor1.Text}\n{TextEditor2.Text}"; // Use newline as a delimiter
 
 
         if (BindingContext is Models.Udrzbari note)
@@ -54,8 +54,14 @@ public partial class Modal_udrzbar : ContentPage
 
         if (File.Exists(fileName))
         {
-            noteModel.Jmeno = File.ReadAllText(fileName);
-            noteModel.Specializace = File.ReadAllText(fileName);
+            // Split the content by the delimiter (in this case, newline)
+            string[] lines = File.ReadAllLines(fileName);
+
+            if (lines.Length > 0)
+                noteModel.Jmeno = lines[0]; // First line is the name
+
+            if (lines.Length > 1)
+                noteModel.Specializace = lines[1]; // Second line is the specialization
         }
 
         BindingContext = noteModel;

@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace Skola_App.Models
 {
-    internal class all_udrzba
+    class AllStudenti
     {
-        public ObservableCollection<Udrzbari> all_udrzbari { get; set; } = new ObservableCollection<Udrzbari>();
+        public ObservableCollection<Studenti> AllStudenti1 { get; set; } = new ObservableCollection<Studenti>();
 
-        public all_udrzba() =>
-            LoadUdrzbari();
+        public AllStudenti() =>
+            LoadStudenti();
 
-        public void LoadUdrzbari()
+        public void LoadStudenti()
         {
-            all_udrzbari.Clear(); // Ensure the collection is cleared first
+            AllStudenti1.Clear(); // Ensure the collection is cleared first
 
             // Get the folder where the notes are stored.
             string appDataPath = FileSystem.AppDataDirectory;
 
             // Use Linq extensions to load the *.ucitele.txt files.
-            IEnumerable<Udrzbari> ucitele = Directory
+            IEnumerable<Studenti> ucitele = Directory
 
                                         // Select the file names from the directory
-                                        .EnumerateFiles(appDataPath, "*.udrzba.txt")
+                                        .EnumerateFiles(appDataPath, "*.studenti.txt")
 
                                         // Each file name is used to create a new Ucitele object
                                         .Select(filename =>
@@ -34,11 +34,11 @@ namespace Skola_App.Models
                                             string[] lines = File.ReadAllLines(filename);
 
                                             // Create a new Ucitele object with the first and second line
-                                            return new Udrzbari()
+                                            return new Studenti()
                                             {
                                                 Filename = filename,
                                                 Jmeno = lines.Length > 0 ? lines[0] : string.Empty, // First line is the name
-                                                Specializace = lines.Length > 1 ? lines[1] : string.Empty  // Second line is the title
+                                                Rodne_mesto = lines.Length > 1 ? lines[1] : string.Empty  // Second line is the title
                                             };
                                         })
 
@@ -46,9 +46,9 @@ namespace Skola_App.Models
                                         .OrderBy(ucitel => ucitel.Jmeno);
 
             // Add each Ucitele into the ObservableCollection
-            foreach (Udrzbari ucitel in ucitele)
+            foreach (Studenti ucitel in ucitele)
             {
-                all_udrzbari.Add(ucitel);
+                AllStudenti1.Add(ucitel);
             }
         }
     }

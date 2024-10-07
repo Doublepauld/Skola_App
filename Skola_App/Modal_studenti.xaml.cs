@@ -1,23 +1,23 @@
 namespace Skola_App;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
-public partial class Modal_podpora : ContentPage
+public partial class Modal_studenti : ContentPage
 {
-    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "podpora.txt");
+    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "studenti.txt");
 
     public string ItemId
     {
         set { LoadNote(value); }
     }
 
-    public Modal_podpora()
+    public Modal_studenti()
     {
 
         InitializeComponent();
 
 
         string appDataPath = FileSystem.AppDataDirectory;
-        string randomFileName = $"{Path.GetRandomFileName()}.podpora.txt";
+        string randomFileName = $"{Path.GetRandomFileName()}.studenti.txt";
 
         LoadNote(Path.Combine(appDataPath, randomFileName));
 
@@ -29,7 +29,7 @@ public partial class Modal_podpora : ContentPage
         string text = $"{TextEditor1.Text}\n{TextEditor2.Text}"; // Use newline as a delimiter
 
 
-        if (BindingContext is Models.Podpora note)
+        if (BindingContext is Models.Studenti note)
             File.WriteAllText(note.Filename, text);
 
         await Shell.Current.GoToAsync("..");
@@ -37,7 +37,7 @@ public partial class Modal_podpora : ContentPage
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Podpora note)
+        if (BindingContext is Models.Studenti note)
         {
             // Delete the file.
             if (File.Exists(note.Filename))
@@ -49,7 +49,7 @@ public partial class Modal_podpora : ContentPage
 
     private void LoadNote(string fileName)
     {
-        Models.Podpora noteModel = new Models.Podpora();
+        Models.Studenti noteModel = new Models.Studenti();
         noteModel.Filename = fileName;
 
         if (File.Exists(fileName))
@@ -61,7 +61,7 @@ public partial class Modal_podpora : ContentPage
                 noteModel.Jmeno = lines[0]; // First line is the name
 
             if (lines.Length > 1)
-                noteModel.Titul = lines[1]; // Second line is the specialization
+                noteModel.Rodne_mesto = lines[1]; // Second line is the specialization
         }
 
         BindingContext = noteModel;

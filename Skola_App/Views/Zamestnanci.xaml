@@ -3,10 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Skola_App.Views.Zamestnanci"
              Title="Zamestnanci">
-    <VerticalStackLayout>
-        <Label 
-            Text="Zaměstnanci" FontSize="40" BackgroundColor="LightGreen" 
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    
+
+   
 </ContentPage>

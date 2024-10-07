@@ -6,27 +6,37 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
     </ContentPage.ToolbarItems>
+    <StackLayout>
+        <!-- Title Section -->
+        <Grid BackgroundColor="Green" Padding="10">
+            <Label Text="Podpora" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   TextColor="White"/>
+        </Grid>
 
-    <!-- Display notes in a list -->
-    <CollectionView x:Name="notesCollection"
-            ItemsSource="{Binding Notes}"
-            Margin="20"
-            SelectionMode="Single"
-            SelectionChanged="notesCollection_SelectionChanged">
+        <!-- Display notes in a list -->
+        <CollectionView x:Name="notesCollection"
+                        ItemsSource="{Binding AllPodpora1}"
+                        Margin="20"
+                        SelectionMode="Single"
+                        SelectionChanged="notesCollection_SelectionChanged">
 
-        <!-- Designate how the collection of items are laid out -->
-        <CollectionView.ItemsLayout>
-            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-        </CollectionView.ItemsLayout>
+            <!-- Designate how the collection of items are laid out -->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+            </CollectionView.ItemsLayout>
 
-        <!-- Define the appearance of each item in the list -->
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="22"/>
-                    <Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            <!-- Define the appearance of each item in the list -->
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label Text="{Binding Jmeno}" FontSize="22"/>
+                        <Label Text="{Binding Titul}" FontSize="22"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentPage>
