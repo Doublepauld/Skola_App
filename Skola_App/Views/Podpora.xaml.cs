@@ -1,14 +1,26 @@
+using Skola_App.Models;
+using System.Windows.Input;
+
 namespace Skola_App.Views;
 
 public partial class Podpora : ContentPage
 {
+    public ICommand DeletePodporaCommand { get; }
     public Podpora()
     {
         InitializeComponent();
 
         BindingContext = new Models.AllPodpora();
+        DeletePodporaCommand = new Command<Podpora>(OnDelete);
     }
 
+    private void OnDelete(Podpora podpora)
+    {
+        string path = Path.Combine(FileSystem.AppDataDirectory, podpora.Filename);
+        File.Delete(path);
+
+        ((Models.AllPodpora)BindingContext).LoadPodpora();
+    }
     protected override void OnAppearing()
     {
         ((Models.AllPodpora)BindingContext).LoadPodpora();

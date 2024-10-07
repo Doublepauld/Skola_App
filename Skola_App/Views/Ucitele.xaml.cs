@@ -1,12 +1,26 @@
+using Skola_App.Models;
+using System.Windows.Input;
+
 namespace Skola_App.Views;
 
 public partial class Ucitele : ContentPage
 {
-	public Ucitele()
+    public ICommand DeleteUciteleCommand { get; }
+    public Ucitele()
 	{
 		InitializeComponent();
 
         BindingContext = new Models.AllUcitele();
+        DeleteUciteleCommand = new Command<Ucitele>(OnDelete);
+    }
+
+    private void OnDelete(Ucitele ucit)
+    {
+        
+        string path = Path.Combine(FileSystem.AppDataDirectory, ucit.Filename);
+        File.Delete(path);
+
+        ((Models.AllUcitele)BindingContext).LoadNotes();
     }
 
     protected override void OnAppearing()

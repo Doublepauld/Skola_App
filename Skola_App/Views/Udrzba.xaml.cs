@@ -1,10 +1,12 @@
 using Skola_App.Models;
 using System.Windows.Input;
 
+
 namespace Skola_App.Views;
 
 public partial class Udrzba : ContentPage
 {
+    public ICommand DeleteCommand { get; }
     public Udrzba()
     {
         InitializeComponent();
@@ -13,26 +15,16 @@ public partial class Udrzba : ContentPage
         DeleteCommand = new Command<Udrzbari>(OnDelete);
     }
 
-    public ICommand DeleteCommand { get; }
+ 
 
 
     private void OnDelete(Udrzbari udrzbari)
     {
-        if (udrzbari != null)
-        {
-            // Remove the item from your collection
-            var udrzbariList = (BindingContext as all_udrzba)?.all_udrzbari;
-            if (udrzbariList != null)
-            {
-                udrzbariList.Remove(udrzbari);
+        
+        string path = Path.Combine(FileSystem.AppDataDirectory, udrzbari.Filename);
+        File.Delete(path);
 
-                // If you need to delete the associated file as well:
-                if (File.Exists(udrzbari.Filename))
-                {
-                    File.Delete(udrzbari.Filename);
-                }
-            }
-        }
+        ((Models.all_udrzba)BindingContext).LoadUdrzbari();
     }
     protected override void OnAppearing()
     {

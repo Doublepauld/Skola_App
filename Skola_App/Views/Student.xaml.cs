@@ -1,12 +1,24 @@
+using System.Windows.Input;
+
 namespace Skola_App.Views;
 
 public partial class Student : ContentPage
 {
+    public ICommand DeleteStudentCommand { get; }
     public Student()
     {
         InitializeComponent();
 
         BindingContext = new Models.AllStudenti();
+        DeleteStudentCommand = new Command<Student>(OnDelete);
+    }
+
+    private void OnDelete(Student ucitele)
+    {
+        string path = Path.Combine(FileSystem.AppDataDirectory, ucitele.Filename);
+        File.Delete(path);
+
+        ((Models.AllStudenti)BindingContext).LoadStudenti();
     }
 
     protected override void OnAppearing()

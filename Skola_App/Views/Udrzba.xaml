@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Skola_App.Views"
              x:Class="Skola_App.Views.Udrzba"
              Title="Udrzba">
-    
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
     </ContentPage.ToolbarItems>
 
-
     <StackLayout>
         <Grid BackgroundColor="Green" Padding="10">
             <Label Text="Údržbáři" 
-          FontSize="24" 
-          HorizontalOptions="Center" 
-          VerticalOptions="Center" 
-          TextColor="White"/>
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   TextColor="White"/>
         </Grid>
 
         <CollectionView x:Name="notesCollection"
-                ItemsSource="{Binding all_udrzbari}"
-                Margin="20"
-                SelectionMode="Single"
-                SelectionChanged="notesCollection_SelectionChanged">
+                        ItemsSource="{Binding all_udrzbari}"
+                        Margin="20"
+                        SelectionMode="Single"
+                        SelectionChanged="notesCollection_SelectionChanged">
 
-            <!-- Designate how the collection of items are laid out -->
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
             </CollectionView.ItemsLayout>
 
-            <!-- Define the appearance of each item in the list -->
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="Center">
@@ -39,16 +36,11 @@
                             <Label Text="{Binding Specializace}" FontSize="22"/>
                         </StackLayout>
                         <Button Text="Delete"
-                        Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.DeleteCommand}"
-                        CommandParameter="{Binding .}"
-                        BackgroundColor="Red"
-                        TextColor="White"/>
+                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:Udrzba}}, Path=DeleteCommand}"
+                         CommandParameter="{Binding .}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </StackLayout>
-    <!-- Display notes in a list -->
-    
 </ContentPage>
