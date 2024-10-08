@@ -11,7 +11,7 @@
 
         <ShellContent
         Title="Učitelé"
-        ContentTemplate="{DataTemplate views:Ucitele}"
+        ContentTemplate="{DataTemplate views:Ucitele1}"
          />
 
         <ShellContent
@@ -22,7 +22,7 @@
 
             <ShellContent
          Title="Podpora"
-         ContentTemplate="{DataTemplate views:Podpora}"
+         ContentTemplate="{DataTemplate views:Podpora1}"
           />
 
         <ShellContent

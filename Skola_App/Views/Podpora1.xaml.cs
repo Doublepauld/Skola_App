@@ -3,10 +3,10 @@ using System.Windows.Input;
 
 namespace Skola_App.Views;
 
-public partial class Podpora : ContentPage
+public partial class Podpora1 : ContentPage
 {
     public ICommand DeletePodporaCommand { get; }
-    public Podpora()
+    public Podpora1()
     {
         InitializeComponent();
 

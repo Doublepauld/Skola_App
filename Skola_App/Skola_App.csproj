@@ -58,8 +58,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Ucitele.xaml.cs">
-	    <DependentUpon>Ucitele.xaml</DependentUpon>
+	  <Compile Update="Views\Podpora1.xaml.cs">
+	    <DependentUpon>Podpora1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Ucitele1.xaml.cs">
+	    <DependentUpon>Ucitele1.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -79,13 +82,13 @@
 	  <MauiXaml Update="Skola.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Podpora.xaml">
+	  <MauiXaml Update="Views\Podpora1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Student.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Ucitele.xaml">
+	  <MauiXaml Update="Views\Ucitele1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Udrzba.xaml">

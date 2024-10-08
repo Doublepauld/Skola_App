@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Skola_App.Views.Ucitele"
-             Title="Ucitele">
-   
-        <ContentPage.ToolbarItems>
-            <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
-        </ContentPage.ToolbarItems>
-
-
+             x:Class="Skola_App.Views.Podpora1"
+             Title="Podpora1">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />
+    </ContentPage.ToolbarItems>
     <StackLayout>
-
-
         <!-- Title Section -->
         <Grid BackgroundColor="Green" Padding="10">
-            <Label Text="učitelé" 
-             FontSize="24" 
-             HorizontalOptions="Center" 
-             VerticalOptions="Center" 
-             TextColor="White"/>
+            <Label Text="Podpora" 
+                   FontSize="24" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" 
+                   TextColor="White"/>
         </Grid>
-        
+
         <!-- Display notes in a list -->
         <CollectionView x:Name="notesCollection"
-                ItemsSource="{Binding AllUcitele1}"
+                ItemsSource="{Binding AllPodpora1}"
                 Margin="20"
                 SelectionMode="Single"
                 SelectionChanged="notesCollection_SelectionChanged">
@@ -40,14 +35,11 @@
                             <Label Text="{Binding Titul}" FontSize="22"/>
                         </StackLayout>
                         <Button Text="Delete"
-                         Command="{Binding Source={RelativeSource AncestorType={x:Type local:Ucitele}}, Path=DeleteUciteleCommand}"
-                         CommandParameter="{Binding .}" />
+                 Command="{Binding Source={RelativeSource AncestorType={x:Type local:Podpora1}}, Path=DeletePodporaCommand}"
+                 CommandParameter="{Binding .}" />
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
     </StackLayout>
-       
-    
 </ContentPage>

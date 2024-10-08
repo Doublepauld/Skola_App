@@ -1,12 +1,13 @@
 using Skola_App.Models;
 using System.Windows.Input;
 
+
 namespace Skola_App.Views;
 
-public partial class Ucitele : ContentPage
+public partial class Ucitele1 : ContentPage
 {
     public ICommand DeleteUciteleCommand { get; }
-    public Ucitele()
+    public Ucitele1()
 	{
 		InitializeComponent();
 

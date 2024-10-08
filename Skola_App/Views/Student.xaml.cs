@@ -1,3 +1,4 @@
+using Skola_App.Models;
 using System.Windows.Input;
 
 namespace Skola_App.Views;
@@ -10,10 +11,10 @@ public partial class Student : ContentPage
         InitializeComponent();
 
         BindingContext = new Models.AllStudenti();
-        DeleteStudentCommand = new Command<Student>(OnDelete);
+        DeleteStudentCommand = new Command<Studenti>(OnDelete);
     }
 
-    private void OnDelete(Student ucitele)
+    private void OnDelete(Studenti ucitele)
     {
         string path = Path.Combine(FileSystem.AppDataDirectory, ucitele.Filename);
         File.Delete(path);
